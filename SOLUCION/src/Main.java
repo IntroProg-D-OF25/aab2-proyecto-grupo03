@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class Main {
     // Registro de ventas:
     // Cada fila tiene: [película, sala, boletos vendidos, detalle de snack/combos, monto total]
@@ -13,13 +12,12 @@ public class Main {
     public static void main(String[] args) {
         // Cargar datos desde archivos de texto
         // Para peliculas se leen 5 campos: nombre, sala, horario, precio, clasificacion
-        String[][] peliculas = loadArchivo("peliculas.txt", 5);
-        String[][] snacks = loadArchivo("snacks.txt", 2);
+        String[][] peliculas = cargarArchivo("peliculas.txt", 5);
+        String[][] snacks = cargarArchivo("snacks.txt", 2);
 
         Scanner sc = new Scanner(System.in);
         int opcion;
         do {
-            // Menú principal
             System.out.println("====================================");
             System.out.println("             CineMas-Loja");
             System.out.println("====================================");
@@ -31,6 +29,7 @@ public class Main {
             System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
             sc.nextLine(); // Consumir salto de línea
+
             switch (opcion) {
                 case 1:
                     verCartelera(peliculas, snacks, sc);
@@ -62,8 +61,8 @@ public class Main {
      * @param numCampos Número de campos esperados por línea.
      * @return Arreglo bidimensional con los datos del archivo.
      */
-    public static String[][] loadArchivo(String filename, int numCampos) {
-        // Este bloque "try" sirve para dar la cantidad de columnas de "data" (line 80)
+    public static String[][]  cargarArchivo(String filename, int numCampos) {
+        // Este bloque "try" sirve para dar la cantidad de filas de "data" (line 78)
         int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             while (br.readLine() != null) {
@@ -72,6 +71,7 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Error al leer el archivo " + filename + ": " + e.getMessage());
         }
+
         String[][] data = new String[count][numCampos];
         int index = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -107,12 +107,12 @@ public class Main {
                     + " - Clasificación: " + peliculas[i][4]);
         }
         System.out.println("------------------------------\n");
+
         // Preguntar si desea comprar un boleto
         System.out.print("¿Desea comprar un boleto? (s/n): ");
         String resp = sc.nextLine();
         if (resp.equalsIgnoreCase("s")) {
-            int a = 1;
-            compra(peliculas, snacks, sc, a);
+            compra(peliculas, snacks, sc, 1);
         }
     }
 
@@ -128,19 +128,18 @@ public class Main {
             System.out.println((i + 1) + ". " + snacks[i][0] + " - Precio: $" + snacks[i][1]);
         }
         System.out.println("-----------------------\n");
+
         // Preguntar si desea comprar un snack
         System.out.print("¿Desea comprar un snack? (s/n): ");
         String resp = sc.nextLine();
         if (resp.equalsIgnoreCase("s")) {
-            int a = 2;
-            compra(peliculas, snacks, sc, a);
+            compra(peliculas, snacks, sc, 2);
         }
     }
 
     /**
      * Función de compra combinada: permite al usuario elegir si desea comprar primero,
      * boletos o snacks, y luego ofrece la opción de agregar el otro producto.
-     *
      * @param peliculas Arreglo con la cartelera.
      * @param snacks    Arreglo con la lista de snacks.
      * @param sc        Scanner para la entrada de datos.
@@ -219,8 +218,7 @@ public class Main {
      * Función para procesar la compra de boletos.
      * Muestra la cartelera (con horario y clasificación), permite seleccionar la película,
      * ingresar la cantidad y aplicar promoción si corresponde.
-     *
-     * @param peliculas Arreglo con la cartelera.
+          * @param peliculas Arreglo con la cartelera.
      * @param sc        Scanner para la entrada de datos.
      * @return Arreglo de String con datos: [película, sala, cantidad boletos, total a pagar]
      */
@@ -260,9 +258,8 @@ public class Main {
         double descuento = (promo.equalsIgnoreCase("s")) ? 0.10 : 0.0;
         double subtotal = cantidadBoletos * precioBoleto;
         double totalBoletos = subtotal - (subtotal * descuento);
-
         // Mostrar detalle incluyendo horario y clasificación
-        System.out.println("\n--- Detalle de Boletos ---");
+        System.out.println("--- Detalle de Boletos ---");
         System.out.println("Película: " + nombrePelicula);
         System.out.println("Sala: " + sala);
         System.out.println("Horario: " + horario);
@@ -285,7 +282,6 @@ public class Main {
     /**
      * Función para procesar la compra de snacks.
      * Muestra la lista de snacks, permite seleccionar uno y la cantidad, y calcula el total.
-     *
      * @param snacks Arreglo con la lista de snacks.
      * @param sc     Scanner para la entrada de datos.
      * @return Arreglo de String con datos: [detalle snack (nombre x cantidad), total a pagar]
@@ -345,6 +341,7 @@ public class Main {
                         registroVentas[i][4]);
             }
         }
-        System.out.println("---------------------------\n");
+        String barra= "---------------------------\n";
+        System.out.println(barra);
     }
 }
