@@ -1,6 +1,4 @@
-La Aventura      , 3, 12:15, 11.50, A
-MICHAEL ALEXANDER, 6, 15:15, 15.30, B
-LEONARD PM       , 4, 09:09, 11.22, C
-POOL OWEN        , 2, 14:18, 12.45, D
-POSEIDON         , 1, 18:24, 12.33, E
-BOTAS            , 2, 18:27, 15.21, F
+La Aventura      , 3, 12:15, 11.50, B
+Siempre a tu lado, 6, 15:15, 15.30, A
+La sustancia     , 4, 09:09, 11.22, C
+dsds,gjghj,hkl,ñlñl,lñ

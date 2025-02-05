@@ -1,4 +1,3 @@
 Palomitas Grandes     , 5.00
-Palomitas Medianos    , 5.00
 Palomitas Pequeña     , 5.00
 Hot-Dog               , 2.0
