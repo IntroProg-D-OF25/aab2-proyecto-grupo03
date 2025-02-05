@@ -3,8 +3,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
 
+public class Main {
     // Registro de ventas:
     // Cada fila tiene: [película, sala, boletos vendidos, detalle de snack/combos, monto total]
     static String[][] registroVentas = new String[120][5];
@@ -31,7 +31,6 @@ public class Main {
             System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
             sc.nextLine(); // Consumir salto de línea
-
             switch (opcion) {
                 case 1:
                     verCartelera(peliculas, snacks, sc);
@@ -52,7 +51,6 @@ public class Main {
                     System.out.println("Opción inválida. Intente nuevamente.");
             }
         } while (opcion != 6);
-
         sc.close();
     }
 
@@ -74,7 +72,6 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Error al leer el archivo " + filename + ": " + e.getMessage());
         }
-
         String[][] data = new String[count][numCampos];
         int index = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -110,7 +107,6 @@ public class Main {
                     + " - Clasificación: " + peliculas[i][4]);
         }
         System.out.println("------------------------------\n");
-
         // Preguntar si desea comprar un boleto
         System.out.print("¿Desea comprar un boleto? (s/n): ");
         String resp = sc.nextLine();
@@ -132,7 +128,6 @@ public class Main {
             System.out.println((i + 1) + ". " + snacks[i][0] + " - Precio: $" + snacks[i][1]);
         }
         System.out.println("-----------------------\n");
-
         // Preguntar si desea comprar un snack
         System.out.print("¿Desea comprar un snack? (s/n): ");
         String resp = sc.nextLine();
@@ -143,7 +138,7 @@ public class Main {
     }
 
     /**
-     * Función de compra combinada: permite al usuario elegir si desea comprar primero
+     * Función de compra combinada: permite al usuario elegir si desea comprar primero,
      * boletos o snacks, y luego ofrece la opción de agregar el otro producto.
      *
      * @param peliculas Arreglo con la cartelera.
@@ -162,15 +157,9 @@ public class Main {
     }
 
     public static void compra(String[][] peliculas, String[][] snacks, Scanner sc, int opcionInicial) {
-
         // Variables para almacenar detalles de la compra
-        String pelicula = "N/A";
-        String sala = "N/A";
-        String boletosVendidos = "N/A";
-        String snackDetalle = "N/A";
+        String pelicula = "N/A", sala = "N/A", boletosVendidos = "N/A", snackDetalle = "N/A";
         double totalCompra = 0.0;
-
-
         if (opcionInicial == 1) {
             // Compra de boletos primero.
             String[] datosBoletos = comprarBoletos(peliculas, sc);
@@ -178,7 +167,6 @@ public class Main {
             sala = datosBoletos[1];
             boletosVendidos = datosBoletos[2];
             totalCompra += Double.parseDouble(datosBoletos[3]);
-
             // Preguntar si desea agregar un snack.
             System.out.print("¿Desea agregar un snack a su compra? (s/n): ");
             String agregarSnack = sc.nextLine();
@@ -192,7 +180,6 @@ public class Main {
             String[] datosSnack = comprarSnacks(snacks, sc);
             snackDetalle = datosSnack[0];
             totalCompra += Double.parseDouble(datosSnack[1]);
-
             // Preguntar si desea agregar boletos.
             System.out.print("¿Desea agregar boletos a su compra? (s/n): ");
             String agregarBoleto = sc.nextLine();
@@ -207,7 +194,6 @@ public class Main {
             System.out.println("Opción inválida en el proceso de compra.");
             return;
         }
-
         // Mostrar factura combinada
         System.out.println("\n--- Factura de Compra ---");
         if (!pelicula.equals("N/A")) {
@@ -220,7 +206,6 @@ public class Main {
         }
         System.out.println("Total a pagar: $" + totalCompra);
         System.out.println("-------------------------\n");
-
         // Registrar la venta
         registroVentas[registroCount][0] = pelicula;
         registroVentas[registroCount][1] = sala;
@@ -267,7 +252,6 @@ public class Main {
         String horario = peliculas[seleccion - 1][2];
         double precioBoleto = Double.parseDouble(peliculas[seleccion - 1][3]);
         String clasificacion = peliculas[seleccion - 1][4];
-
         System.out.print("Ingrese la cantidad de boletos a comprar: ");
         int cantidadBoletos = sc.nextInt();
         sc.nextLine();
@@ -329,7 +313,6 @@ public class Main {
         System.out.print("Ingrese la cantidad deseada: ");
         int cantidadSnack = sc.nextInt();
         sc.nextLine();
-
         double totalSnack = cantidadSnack * precioSnack;
 
         // Mostrar detalle de la compra de snacks

@@ -1,2 +1,0 @@
-Película             Sala       Boletos    Snack/Combo               Total     
-La Aventura          3          1          Palomitas Grandes x 1     15.35
