@@ -59,7 +59,7 @@ public class Main {
      *
      * @param filename  Nombre del archivo a leer.
      * @param numCampos Número de campos esperados por línea.
-     * @return Arreglo bidimensional con los datos del archivo.
+     * @return          Arreglo bidimensional con los datos del archivo.
      */
     public static String[][]  cargarArchivo(String filename, int numCampos) {
         // Este bloque "try" sirve para dar la cantidad de filas de "data" (line 78)
@@ -92,7 +92,6 @@ public class Main {
     /**
      * Muestra la cartelera de películas (incluyendo horario y clasificación) y pregunta
      * si se desea comprar un boleto.
-     *
      * @param peliculas Arreglo bidimensional con los datos de las películas.
      * @param sc        Scanner para la entrada de datos.
      */
@@ -218,9 +217,9 @@ public class Main {
      * Función para procesar la compra de boletos.
      * Muestra la cartelera (con horario y clasificación), permite seleccionar la película,
      * ingresar la cantidad y aplicar promoción si corresponde.
-          * @param peliculas Arreglo con la cartelera.
+     * @param peliculas Arreglo con la cartelera.
      * @param sc        Scanner para la entrada de datos.
-     * @return Arreglo de String con datos: [película, sala, cantidad boletos, total a pagar]
+     * @return          Arreglo de String con datos: [película, sala, cantidad boletos, total a pagar]
      */
     public static String[] comprarBoletos(String[][] peliculas, Scanner sc) {
         String[] datos = new String[4];
@@ -284,7 +283,7 @@ public class Main {
      * Muestra la lista de snacks, permite seleccionar uno y la cantidad, y calcula el total.
      * @param snacks Arreglo con la lista de snacks.
      * @param sc     Scanner para la entrada de datos.
-     * @return Arreglo de String con datos: [detalle snack (nombre x cantidad), total a pagar]
+     * @return       Arreglo de String con datos: [detalle snack (nombre x cantidad), total a pagar]
      */
     public static String[] comprarSnacks(String[][] snacks, Scanner sc) {
         String[] datos = new String[2];
